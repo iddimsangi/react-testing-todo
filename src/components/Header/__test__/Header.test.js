@@ -14,3 +14,15 @@ test("should renders header text", () => {
   });
   expect(headerTxt).toBeInTheDocument();
 });
+
+test("should not renders  header text list toddo", () => {
+  render(<Header title="Test header message" />);
+  const headerTxt = screen.queryByText("list of toddo");
+  expect(headerTxt).not.toBeInTheDocument();
+});
+
+test("should renders all headings", () => {
+  render(<Header title="Test header message" />);
+  const headers = screen.getAllByRole("heading");
+  expect(headers.length).toBe(2);
+});
